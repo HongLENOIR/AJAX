@@ -1,0 +1,22 @@
+.conteneur{
+     width: 800px;
+     margin: 100px auto;
+     padding: 20px;
+     border: 1px solid #dedede;
+}
+#affichage{
+    width: 500px;
+    margin:0 auto;
+    padding: 20px;
+    background: 1px solid #dedede;
+    text-align: center;
+}
+img{
+    border: 3px solid darkolivegreen;
+    border-radius: 50%;
+  
+}
+h1{
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+}

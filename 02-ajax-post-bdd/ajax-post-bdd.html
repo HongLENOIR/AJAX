@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ajax Post BDD</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Ajax Post BDD </h1>
+        <div class="conteneur">
+            <select name="" id="employes" title="hola" date-alt="hello" date-src="bye"> 
+            <!-- si alt n'existe pas dans le balise select, mais on rajoute 'date-alt', ajax pourait récupérer cette info dans le console par js avec getattribute('date-alt') -->
+                <option value="" selected disabled>Veuillez choisir un employé</option>
+                <option value="350">Jean-Pierre Laborde</option>
+                <option value="388">Clément Gallet</option>
+                <option value="415">Thomas Winter</option>
+                <option value="417">Chloé Dubar</option>
+                <option value="491">Elodie Fellier</option>
+                <option value="509">Fabrice Grand</option>
+                <option value="547">Mélanie Collier</option>
+            </select>
+            <hr><br>
+            <div id="resultat2"></div>
+            <div id="resultat"></div>
+
+        </div>
+
+        <!-- appel du fichier contenant le js ainsi que l'appel ajax -->
+        <script src="ajax-post-bdd.js"></script>
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ajax Get</title>
+        <style>
+            #contenu {width: 50%; margin: 0 auto; border: 1px solid #333; padding: 20px;}
+            body { text-align: center;}
+
+        </style>
+    </head>
+    <body>
+        <div id="contenu">
+            Hello world ! (cliquez sur le bouton en dessous pour changer le contenu)
+        </div>
+        <hr>
+        <button id="changer">Changer</button>
+
+
+        <script>
+            /*
+                Doc de l'objet AJAX: 
+                -------------------
+                https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest
+
+                Liste des statuts HTTP:
+                -----------------------
+                https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP
+                Les codes les plus courants sont :
+                    200 : succès de la requête ; (ok (page trouvée))
+                    301 et 302 : redirection, respectivement permanente et temporaire ;
+                    401 : utilisateur non authentifié ;
+                    403 : accès refusé ;
+                    404 : page non trouvée ; (Not found)
+                    500 et 503 : erreur serveur ;
+                    504 : le serveur n'a pas répondu.
+             
+                Statuts de la requete Ajax: (dans consele, 0, 1 html, 200 http, 4 ajax )
+                ----------------------------
+                0 : Objet créé, la methode open() n'a pas encore été appelée
+                1 : Connexion avec le serveur (url cible)
+                2 : Demande reçue par le serveur
+                3 : traitement côté serveur (réception en cours, réponse partielle)
+                4 : Terminé, réponse reçe.
+
+                Nous attendrons toujours le status (HTTP) = 200 et le readyState (Ajax) =4 (jquery une ligne de code, toujours meme requete et puis réponse)
+
+                xhttp.onreadyStatechange : évènement qui se déclenche à chaque changement de statut sur readyState.
+                xhttp.responseText : propriété qui reçoit naturellement la réponse attendue.
+            
+            */
+
+            // mise en place d'un évènement clic sur le bouton id="changer"; ma note: '.' veut dire d'aller chercher des infos, document veut dire la source
+            // document.getElementById('changer').onclick = function(){ // l'ancien code pour clencher le changement
+            document.getElementById('changer').addEventListener('click', function(){
+               //alert('ok');
+
+               // création de l'objet ajax depuis le navigateur
+                var xhttp = new XMLHttpRequest();
+                console.log(xhttp);
+
+                // Mise en place d'un évènement lié à l'obtention de la réponse Ajax
+                xhttp.onreadystatechange = function(){
+                    console.log(xhttp.status);// pour voir les changements de statut HTTP
+                    console.log(xhttp.readyState); // pour voir les changements de statut de la demande ajax
+
+                    // condition pour vérifier si tout s'est bien passé
+                   
+                    // ma note:ce code dessous veut dire si http passe bien(valeur 200), ajax est fini (valeur 4)
+                    if(xhttp.status == 200 && xhttp.readyState == 4){
+                        // la réponse de l'ajax est contenue dans la propriété responseText
+                        // on place la réponse dans le div id="contenu"
+                        // document.getElementById('contenu').textContent = xhttp.responseText;
+                        document.getElementById('contenu').innerHTML = xhttp.responseText;
+
+                    }
+
+                }
+
+                // on prépare l'appel ajax: 
+                // xhttp.open(methode, url_cible, asynchrone);
+                xhttp.open('get', 'ajax-infos.txt', true);
+                // ma note: la méthode 'get' ou 'post', utiliser par html en suite  php d'autres langage!
+                // 1er argument: la methode ici GET
+                // 2eme argument: l'url cible
+                // 3eme argument: monde asynchrone (true ou false) true par défaut
+
+                // on envoie la communication Ajax
+                xhttp.send();
+
+            });
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+h1{
+    font-family:'Playfair Display', serif;
+    color: darkslategray;
+}
+.conteneur{
+   max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddeedd;
+}
+#affichage{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.image{
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ddeedd;
+    margin-top: 20px;
+    overflow: hidden;
+}
+*{
+    box-sizing: border-box;
+}
+img{
+    max-width: 100%;
+}
+.image > div{ overflow:hidden;max-height: 200px; }
